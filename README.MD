@@ -91,7 +91,7 @@
 ```
 ## Deployed Version
 
-Live demo (Feel free to visit) 👉 :  <a href="https://e-commerce-a-p-i-v1.herokuapp.com/api-docs">E-commerce API</a>
+Live demo (Feel free to visit) 👉 :  <a href="https://e-commerce-api.onrender.com/api-docs/">E-commerce API</a>
 
 ## Key Features
 
@@ -170,7 +170,7 @@ Live demo (Feel free to visit) 👉 :  <a href="https://e-commerce-a-p-i-v1.hero
 
 ## API Usage
 
-Check [Ecommerce API Documentation](https://e-commerce-a-p-i-v1.herokuapp.com/api-docs/) for more info.
+Check [Ecommerce API Documentation](https://e-commerce-api.onrender.com/api-docs/) for more info.
 
 
 ## Built With
