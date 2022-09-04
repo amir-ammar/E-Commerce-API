@@ -1,0 +1,902 @@
+openapi: 3.0.0
+info:
+  title: E-Commerce API
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterRequest'
+              - example:
+                  name: mostafa
+                  email: mostafa@gmail.com
+                  password: '123456'
+                  role: admin
+            example:
+              name: mostafa
+              email: mostafa@gmail.com
+              password: '123456'
+              role: admin
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginRequest'
+              - example:
+                  email: mostafa@gmail.com
+                  password: '123456'
+            example:
+              email: mostafa@gmail.com
+              password: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/logout:
+    get:
+      tags:
+      - Auth
+      summary: logout
+      operationId: logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /users:
+    get:
+      tags:
+      - User
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: the user id (Admin only)
+    get:
+      tags:
+      - User
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users/showMe:
+    get:
+      tags:
+      - User
+      summary: Show Current User
+      operationId: ShowCurrentUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /users/updateUser:
+    patch:
+      tags:
+      - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserRequest'
+              - example:
+                  email: newomar@gmail.com
+                  name: newOmar
+            example:
+              email: newomar@gmail.com
+              name: newOmar
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /users/updateUserPassword:
+    patch:
+      tags:
+      - User
+      summary: Update User Password
+      operationId: UpdateUserPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserPasswordRequest'
+              - example:
+                  oldPassword: '123456'
+                  newPassword: '123456'
+            example:
+              oldPassword: '123456'
+              newPassword: '123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /products:
+    get:
+      tags:
+      - Product
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    post:
+      tags:
+      - Product
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateProductRequest'
+              - example:
+                  name: accent chair
+                  price: 25999
+                  image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                  colors:
+                  - '#ff0000'
+                  - '#00ff00'
+                  - '#0000ff'
+                  company: marcos
+                  description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+                  category: office
+            example:
+              name: accent chair
+              price: 25999
+              image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+              colors:
+              - '#ff0000'
+              - '#00ff00'
+              - '#0000ff'
+              company: marcos
+              description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+              category: office
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /products/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: the product id
+    get:
+      tags:
+      - Product
+      summary: Get Single Product
+      operationId: GetSingleProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    patch:
+      tags:
+      - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateProductRequest'
+              - example:
+                  name: car
+                  price: 0
+                  description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+                  image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                  category: office
+                  company: marcos
+                  colors:
+                  - '#ff0000'
+                  - '#00ff00'
+                  - '#0000ff'
+                  featured: false
+                  freeShipping: false
+                  inventory: 15
+                  averageRating: 0
+                  user: 63133e0d83f1338c68ad3e63
+            example:
+              name: car
+              price: 0
+              description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+              image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+              category: office
+              company: marcos
+              colors:
+              - '#ff0000'
+              - '#00ff00'
+              - '#0000ff'
+              featured: false
+              freeShipping: false
+              inventory: 15
+              averageRating: 0
+              user: 63133e0d83f1338c68ad3e63
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    delete:
+      tags:
+      - Product
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /products/uploadImage:
+    post:
+      tags:
+      - Product
+      summary: Upload Image
+      operationId: UploadImage
+      parameters: []
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+              - image
+              type: object
+              properties:
+                image:
+                  type: string
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /reviews:
+    get:
+      tags:
+      - Review
+      summary: Get All Reviews
+      operationId: GetAllReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    post:
+      tags:
+      - Review
+      summary: Create Review
+      operationId: CreateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateReviewRequest'
+              - example:
+                  product: 631447527fae4cfaa6480ae4
+                  title: good product
+                  comment: good product
+                  rating: '5'
+            example:
+              product: 631447527fae4cfaa6480ae4
+              title: good product
+              comment: good product
+              rating: '5'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /reviews/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: the review id
+    get:
+      tags:
+      - Review
+      summary: Get Single Reviews
+      operationId: GetSingleReviews
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    patch:
+      tags:
+      - Review
+      summary: Update Review
+      operationId: UpdateReview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateReviewRequest'
+              - example:
+                  product: 63133e0d83f1338c68ad3e63
+                  title: good good good product
+                  comment: good good good product
+                  rating: '5'
+            example:
+              product: 63133e0d83f1338c68ad3e63
+              title: good good good product
+              comment: good good good product
+              rating: '5'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    delete:
+      tags:
+      - Review
+      summary: Delete Review
+      operationId: DeleteReview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /orders:
+    get:
+      tags:
+      - Order
+      summary: Get All Orders
+      operationId: GetAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    post:
+      tags:
+      - Order
+      summary: Create order
+      operationId: Createorder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateorderRequest'
+              - example:
+                  tax: 399
+                  shippingFee: 499
+                  items:
+                  - name: accent chair
+                    price: 2599
+                    image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                    amount: 1
+                    product: 63133e0d83f1338c68ad3e63
+            example:
+              tax: 399
+              shippingFee: 499
+              items:
+              - name: accent chair
+                price: 2599
+                image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+                amount: 1
+                product: 63133e0d83f1338c68ad3e63
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /orders/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: the order id
+    get:
+      tags:
+      - Order
+      summary: Get Single order
+      operationId: GetSingleorder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+    patch:
+      tags:
+      - Order
+      summary: Update order
+      operationId: Updateorder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateorderRequest'
+              - example:
+                  paymentIntentId: '123'
+            example:
+              paymentIntentId: '123'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+  /orders/showAllMyOrders:
+    get:
+      tags:
+      - Order
+      summary: Get Current user orders
+      operationId: GetCurrentuserorders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: https://e-commerce-a-p-i-v1.herokuapp.com/api/v1
+        variables: {}
+components:
+  schemas:
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - name
+      - email
+      - password
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+      example:
+        name: ali
+        email: ali@gmail.com
+        password: '123456'
+        role: admin
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: newomar@gmail.com
+        password: '123456'
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      example:
+        email: newomar@gmail.com
+        name: newOmar
+    UpdateUserPasswordRequest:
+      title: UpdateUserPasswordRequest
+      required:
+      - oldPassword
+      - newPassword
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      example:
+        oldPassword: '123456'
+        newPassword: '123456'
+    CreateProductRequest:
+      title: CreateProductRequest
+      required:
+      - name
+      - price
+      - image
+      - colors
+      - company
+      - description
+      - category
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        image:
+          type: string
+        colors:
+          type: array
+          items:
+            type: string
+          description: ''
+        company:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+      example:
+        name: accent chair
+        price: 25999
+        image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+        colors:
+        - '#ff0000'
+        - '#00ff00'
+        - '#0000ff'
+        company: marcos
+        description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+        category: office
+    UpdateProductRequest:
+      title: UpdateProductRequest
+      required:
+      - name
+      - price
+      - description
+      - image
+      - category
+      - company
+      - colors
+      - featured
+      - freeShipping
+      - inventory
+      - averageRating
+      - user
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        description:
+          type: string
+        image:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+        colors:
+          type: array
+          items:
+            type: string
+          description: ''
+        featured:
+          type: boolean
+        freeShipping:
+          type: boolean
+        inventory:
+          type: integer
+          format: int32
+        averageRating:
+          type: integer
+          format: int32
+        user:
+          type: string
+      example:
+        name: car
+        price: 0
+        description: Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge
+        image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+        category: office
+        company: marcos
+        colors:
+        - '#ff0000'
+        - '#00ff00'
+        - '#0000ff'
+        featured: false
+        freeShipping: false
+        inventory: 15
+        averageRating: 0
+        user: 63133e0d83f1338c68ad3e63
+    CreateReviewRequest:
+      title: CreateReviewRequest
+      required:
+      - product
+      - title
+      - comment
+      - rating
+      type: object
+      properties:
+        product:
+          type: string
+        title:
+          type: string
+        comment:
+          type: string
+        rating:
+          type: string
+      example:
+        product: 631447527fae4cfaa6480ae4
+        title: good product
+        comment: good product
+        rating: '5'
+    UpdateReviewRequest:
+      title: UpdateReviewRequest
+      required:
+      - product
+      - title
+      - comment
+      - rating
+      type: object
+      properties:
+        product:
+          type: string
+        title:
+          type: string
+        comment:
+          type: string
+        rating:
+          type: string
+      example:
+        product: 63133e0d83f1338c68ad3e63
+        title: good good good product
+        comment: good good good product
+        rating: '5'
+    CreateorderRequest:
+      title: CreateorderRequest
+      required:
+      - tax
+      - shippingFee
+      - items
+      type: object
+      properties:
+        tax:
+          type: integer
+          format: int32
+        shippingFee:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        tax: 399
+        shippingFee: 499
+        items:
+        - name: accent chair
+          price: 2599
+          image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+          amount: 1
+          product: 63133e0d83f1338c68ad3e63
+    Item:
+      title: Item
+      required:
+      - name
+      - price
+      - image
+      - amount
+      - product
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        image:
+          type: string
+        amount:
+          type: integer
+          format: int32
+        product:
+          type: string
+      example:
+        name: accent chair
+        price: 2599
+        image: https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160
+        amount: 1
+        product: 63133e0d83f1338c68ad3e63
+    UpdateorderRequest:
+      title: UpdateorderRequest
+      required:
+      - paymentIntentId
+      type: object
+      properties:
+        paymentIntentId:
+          type: string
+      example:
+        paymentIntentId: '123'
+tags:
+- name: Auth
+- name: User
+- name: Product
+- name: Review
+- name: Order
