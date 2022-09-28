@@ -35,6 +35,8 @@
   </ol>
 </details>
 
+## Description
+It's a simple api for e-commerce websites
 
 ## Project structure
 ```
